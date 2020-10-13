@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="script.js"></script>
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body ng-app="app" ng-controller="filter">
+    <div>
+      <label for="sel1">City Filter 1</label><br>
+      <select id="sel1" name="sellist1" ng-model="SCity" ng-options="City for City in city" ng-change="citychange(SCity)">
+      <!-- <option value="all">All City</option> -->
+      <!-- <option ng-repeat ="City in city;" value="{{$index+1}}">{{City}}</option> -->
+      <!-- <option>2</option>
+      <option>3</option>
+      <option>4</option> -->
+    </select>
+    </div>
+    <div>
+      <label for="">Builder Filter 2</label>
+    <div class="">
+      <label class="">
+        <input type="checkbox" class="" value="all"  ng-model="isCheck" ng-change="allCheck('all')">All
+      </label>
+    </div>
+    <div class="" ng-repeat ="Builder in builder;" >
+      <label class="">
+        <input type="checkbox"  class="" ng-model="isChecked" ng-change="builderchange(Builder,isChecked)">
+        {{Builder}}
+      </label>
+    </div>
+    </div>
+    <div>
+      <label for="">Price Filter 3</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="all">All
+        </label>
+      </div>
+      <div class="form-check" ng-repeat="Price in p">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" ng-model="PisChecked" ng-change="pricechange(Price,PisChecked)">{{Price}}
+        </label>
+      </div>
+    </div>
+    <div>
+      <label for="sel1">Price Sort Filter 4</label><br>
+      <select class="" id="sel1" name="sellist1" ng-model="fil" ng-change="filterchange(fil)">
+        <option value="all">All</option>
+        <option value="lh">Low To High</option>
+        <option value="hl">High To Low</option>
+      </select>
+    </div>
+    <br>
+    <h1>Builder Project List</h1>
+    <div>
+      <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th>City</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="pro in project">
+        <td>{{pro.project}}</td>
+        <td>{{city[pro.city]}}</td>
+        <td>{{price[pro.project_id]}}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </body>
+</html>
